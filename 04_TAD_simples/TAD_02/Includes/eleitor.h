@@ -1,58 +1,47 @@
-#ifndef _ELEITOR_H
-#define _ELEITOR_H
+#ifndef _ELEITOR_H_
+#define _ELEITOR_H_
 
-/**
- * @struct tEleitor
- * @brief Estrutura que representa um eleitor.
- * @var tEleitor::id
- * Identificador do eleitor.
- * @var tEleitor::votoP
- * Voto para Presidente.
- * @var tEleitor::votoM
- * Voto para Primeiro Ministro.
- */
 typedef struct{
     int id;
     int votoP;
-    int votoM;
+    int votoG;
 } tEleitor;
 
 /**
- * @brief Cria um eleitor.
+ * @brief Cria um eleitor com os dados informados.
  * @param id Identificador do eleitor.
- * @param votoP Voto para Presidente.
- * @param votoM Voto para Primeiro Ministro.
- * @return Retorna um eleitor.
+ * @param votoP Voto para presidente do eleitor.
+ * @param votoG Voto para governador do eleitor.
+ * @return Eleitor criado.
  */
-tEleitor criaEleitor(int id, int votoP, int votoM);
+tEleitor CriaEleitor(int id, int votoP, int votoG);
 
 /**
- * @brief Verifica se o eleitor já votou.
+ * @brief Lê um eleitor do teclado.
+ * @return Eleitor lido.
+ */
+tEleitor LeEleitor();
+
+/**
+ * @brief Obtém o voto para presidente do eleitor.
  * @param eleitor Eleitor a ser verificado.
- * @param idAnterior Identificador do eleitor anterior.
- * @return Retorna 1 se o eleitor já votou e 0 caso contrário.
+ * @return Voto para presidente do eleitor.
  */
-int jaVotou(tEleitor eleitor, int idAnterior);
+int ObtemVotoPresidente(tEleitor eleitor);
 
 /**
-* @brief Obtém o identificador do eleitor.
-* @param eleitor Eleitor a ser verificado.
-* @return Retorna o identificador do eleitor.
-*/
-int obtemIdEleitor(tEleitor eleitor);
-
-/**
- * @brief Obtém o voto para Presidente.
+ * @brief Obtém o voto para governador do eleitor.
  * @param eleitor Eleitor a ser verificado.
- * @return Retorna o voto para Presidente.
+ * @return Voto para governador do eleitor.
  */
-int obtemVotoPresidente(tEleitor eleitor);
+int ObtemVotoGovernador(tEleitor eleitor);
 
 /**
- * @brief Obtém o voto para Primeiro Ministro.
- * @param eleitor Eleitor a ser verificado.
- * @return Retorna o voto para Primeiro Ministro.
+ * @brief Verifica se dois eleitores são iguais (dica: use para verificar se algum eleitor tentou registar um voto novamente).
+ * @param eleitor1 Primeiro eleitor a ser comparado.
+ * @param eleitor2 Segundo eleitor a ser comparado.
+ * @return 1 se os eleitores são iguais, 0 caso contrário.
  */
-int obtemVotoPMinistro(tEleitor eleitor);
+int EhMesmoEleitor(tEleitor eleitor1, tEleitor eleitor2);
 
 #endif
